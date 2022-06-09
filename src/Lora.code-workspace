@@ -1,7 +1,8 @@
 {
 	"folders": [
 		{
-			"path": ".."
+			"name": "Lora2",
+			"path": "../../Lora2"
 		}
 	],
 	"settings": {}
