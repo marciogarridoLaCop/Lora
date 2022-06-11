@@ -1,6 +1,6 @@
 # Heltec ESP32+LoRa + BMP085
 
-![Screenshot](Pinout.png)
+![Screenshot](/img/Pinout.png)
 ### Firsts steps to install? ###
 
 1 - Install Visual Studio Code
@@ -13,5 +13,6 @@
 
 4 - clone repo from github https://github.com/marciogarridoLaCop/Lora
 
+![Screenshot](/img/conec.png)
 
 marciogarrido@id.uff.br
