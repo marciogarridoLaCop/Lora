@@ -7,7 +7,7 @@ Biblioteca de leitura do Adafruit_BMP085 e print de dados no display do LORA
 #include <heltec.h>
 #include <Adafruit_BMP085.h>
 String value;
-
+float sensorReadingsArr[5];
 // porta física do sensor bmp
 #define SDA 21
 #define SCL 13
@@ -34,6 +34,7 @@ void inicializa_sensor()
 void coletadados(){
   value ="Temperatura = ";  //make sure the string is empty if its not
   value += bme.readTemperature();
+  sensorReadingsArr[0]=bme.readTemperature();
   value +=" *C"; 
   Heltec.display->clear();
   Heltec.display->setFont(ArialMT_Plain_10);
@@ -41,12 +42,14 @@ void coletadados(){
   
   value ="Pressão = ";  //make sure the string is empty if its not
   value += bme.readPressure();
+  sensorReadingsArr[1]=bme.readPressure();
   value +=" *Pa"; 
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 10, value);
 
   value ="Altitude = ";  //make sure the string is empty if its not
   value += bme.readAltitude();
+  sensorReadingsArr[2]=bme.readAltitude();
   value +=" metros"; 
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 20, value);
@@ -54,6 +57,7 @@ void coletadados(){
 
   value ="P. mar = ";  //make sure the string is empty if its not
   value += bme.readSealevelPressure();
+  sensorReadingsArr[3]=bme.readSealevelPressure();
   value +=" Pa"; 
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 30, value);
@@ -61,6 +65,7 @@ void coletadados(){
 
   value ="Altitude real = ";  //make sure the string is empty if its not
   value += bme.readAltitude(101500);
+  sensorReadingsArr[4]=bme.readAltitude(101500);
   value +=" Pa"; 
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 40, value);
