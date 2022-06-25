@@ -19,7 +19,7 @@ HTTPClient http;
 String sensorReadings;
 
 unsigned int counter = 0;
-const char *serverName = "https://api-esp.herokuapp.com/DataLog/";
+const char *serverName = "https://api-esp.herokuapp.com/DataLogSensor/";
 unsigned long timerDelay = 5000;
 unsigned long lastTime = 0;
 void setup()
@@ -45,19 +45,21 @@ void setup()
   // wifiManager.setSaveConfigCallback(saveConfigCallback);
 }
 
-
-
-String httpPostdata(const char *serverName,int sensor,float temperatura,float umidade,float pressao,float altitude)
+String httpPostdata(int sensor)
 {
-  
   HTTPClient http;
 
   http.begin(serverName);
   http.addHeader("Content-Type", "application/json");
   http.setAuthorization("hardware-api", "S@les0288");
-  String httpRequestData = "{\"sensor\":\"" + String(1) + "\",\"temperatura\":\"" + String(24) +"\",\"umidade\":\"" + String(2) + "\",\"pressao\":\"" + String(10) + "\"}";
-
-  // Send HTTP POST request
+  String dados;
+  dados =  "{\"sensor\":\"" + String(sensor);
+  dados += "\",\"temperatura\":\"" + String(sensorReadingsArr[0]);
+  dados += "\",\"pressao\":\"" + String(sensorReadingsArr[1]);
+  dados += "\",\"altitude\":\"" + String(sensorReadingsArr[2]);
+  dados += "\",\"pressa_nivel_mar\":\"" + String(sensorReadingsArr[3]);
+  dados += "\",\"altitude_real\":\"" + String(sensorReadingsArr[4]) + "\"}";
+  String httpRequestData = dados;
   int httpResponseCode = http.POST(httpRequestData);
 
   String payload = "{}";
@@ -78,11 +80,9 @@ String httpPostdata(const char *serverName,int sensor,float temperatura,float um
 
   return payload;
 }
-String httpGETRequest(const char *serverName)
+String httpGETRequest()
 {
-   HTTPClient http;
-
-  
+  HTTPClient http;
   http.begin(serverName);
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   http.setAuthorization("hardware-api", "S@les0288");
@@ -109,9 +109,8 @@ String httpGETRequest(const char *serverName)
 }
 void loop()
 {
-  //sensorReadings = httpPostdata(serverName);
-  //Serial.println(sensorReadings);
   delay(1000);
   coletadados();
-  
+  sensorReadings = httpPostdata(1);
+  Serial.println(sensorReadings);
 }
