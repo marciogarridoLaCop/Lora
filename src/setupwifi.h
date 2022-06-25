@@ -17,8 +17,8 @@ WiFiManager wifiManager;
 void configModeCallback(WiFiManager *myWiFiManager)
 {
   Serial.println("Entrou no modo de configuração");
-  Serial.println(WiFi.softAPIP());                      // imprime o IP do AP
-  Serial.println(myWiFiManager->getConfigPortalSSID()); // imprime o SSID criado da rede
+  Serial.println(WiFi.softAPIP());                     
+  Serial.println(myWiFiManager->getConfigPortalSSID()); 
 }
 void saveConfigCallback()
 {

@@ -8,7 +8,6 @@ Autor : Márcio Alexandre Dias Garrido
 #include <WiFi.h>
 #include <logo.h>
 #include <setupwifi.h>
-#include <Arduino_JSON.h>
 #include <api.h>
 
 
