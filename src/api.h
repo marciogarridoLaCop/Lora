@@ -8,7 +8,7 @@ const char *password = "S@les0288";
 
 String httpPostdata(int sensorID )// O parametro id sensor é o identificador da estação hardware cadastrada na API- REST
 {
-  
+  coletadados();
   HTTPClient http;
   http.begin(serverName);
   http.addHeader("Content-Type", "application/json");

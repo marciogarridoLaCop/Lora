@@ -36,7 +36,6 @@ void setup()
 void loop()
 {
   delay(1000);
-  coletadados();
   sensorReadings = httpPostdata(1);
   Serial.println(sensorReadings);
 }
