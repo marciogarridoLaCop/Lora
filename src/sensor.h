@@ -62,6 +62,7 @@ void coletadados(){
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 30, value);
   
+
   value ="Altitude real = ";  //make sure the string is empty if its not
   value += bme.readAltitude(101500);
   sensorReadingsArr[4]=bme.readAltitude(101500);
