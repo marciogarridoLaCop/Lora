@@ -2,9 +2,10 @@
 #include <sensor.h>
 
 
-const char *serverName = "https://api-esp.herokuapp.com/DataLogSensor/";
+const char *serverName = "https://api-esp.herokuapp.com/datalogsensor/";
 const char *username = "hardware-api";
 const char *password = "S@les0288";
+
 
 String httpPostdata(int sensorID )// O parametro id sensor é o identificador da estação hardware cadastrada na API- REST
 {
