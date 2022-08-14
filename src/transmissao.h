@@ -1,8 +1,7 @@
 #include <WiFi.h>
-#include <api.h>
+#include <api_wifi.h>
+#include <api_gsm.h>
 #include <sensor.h>
-#include <gsm.h>
-
 
 void envio_dados()
 {
