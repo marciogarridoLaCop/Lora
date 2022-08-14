@@ -31,7 +31,8 @@ void inicializa_sensor()
   }
 }
 
-void coletadados(){
+String  coletadados(String sensorID){
+  
   value ="Temperatura = ";  //make sure the string is empty if its not
   value += bme.readTemperature();
   sensorReadingsArr[0]=bme.readTemperature();
@@ -54,7 +55,6 @@ void coletadados(){
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 20, value);
 
-
   value ="P. mar = ";  //make sure the string is empty if its not
   value += bme.readSealevelPressure();
   sensorReadingsArr[3]=bme.readSealevelPressure();
@@ -70,5 +70,12 @@ void coletadados(){
   Heltec.display->setFont(ArialMT_Plain_10);
   Heltec.display->drawString(0, 40, value);
   Heltec.display->display();
-
+  String dados;
+  dados =  "{\"sensor\":\"" + String(sensorID);
+  dados += "\",\"temperatura\":\"" + String(sensorReadingsArr[0]);
+  dados += "\",\"pressao\":\"" + String(sensorReadingsArr[1]);
+  dados += "\",\"altitude\":\"" + String(sensorReadingsArr[2]);
+  dados += "\",\"pressa_nivel_mar\":\"" + String(sensorReadingsArr[3]);
+  dados += "\",\"altitude_real\":\"" + String(sensorReadingsArr[4]) + "\"}";
+  return dados;
 }

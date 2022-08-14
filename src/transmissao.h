@@ -4,7 +4,7 @@
 #include <gsm.h>
 
 
-void envio()
+void envio_dados()
 {
     inicializa_sensor();
     if (WiFi.status() == WL_CONNECTED)
@@ -16,6 +16,7 @@ void envio()
     else
     {
        Serial.println("Envio por GSM");
+       gsm_config_gprs();
        gsm_http_post(coletadados("1"));
       
     }

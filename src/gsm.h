@@ -1,5 +1,10 @@
-#include <cfg.h>
 #include <SoftwareSerial.h>
+
+String apn = "java.claro.com.br";                    //APN
+String apn_u = "claro";                     //APN-Username
+String apn_p = "claro";                     //APN-Password
+String url = "api-esp.herokuapp.com/datalogsensor/";  //URL of Server
+
 
 SoftwareSerial SWserial(33, 12); // RX, TX
 
@@ -28,8 +33,9 @@ void gsm_config_gprs() {
   }
 }
 
+void gsm_http_post(String Dados_Sensor) {
 
-void gsm_http_post( String postdata) {
+  String httpRequestData =  Dados_Sensor;
   Serial.println(" --- Start GPRS & HTTP --- ");
   gsm_send_serial("AT+SAPBR=1,1");
   gsm_send_serial("AT+SAPBR=2,1");
@@ -38,8 +44,8 @@ void gsm_http_post( String postdata) {
   gsm_send_serial("AT+HTTPPARA=URL," + url);
   gsm_send_serial("AT+HTTPPARA=USERDATA,Authorization: Basic bWFyY2lvZ2FycmlkbzozMTUwMjA=");
   gsm_send_serial("AT+HTTPPARA=CONTENT,application/json");
-  gsm_send_serial("AT+HTTPDATA="+String(postdata.length())+",5000");
-  gsm_send_serial(postdata);
+  gsm_send_serial("AT+HTTPDATA="+String(httpRequestData.length())+",5000");
+  gsm_send_serial(httpRequestData);
   gsm_send_serial("AT+HTTPACTION=1");
   gsm_send_serial("AT+HTTPREAD");
   gsm_send_serial("AT+HTTPTERM");
