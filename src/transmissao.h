@@ -9,14 +9,14 @@ void envio_dados()
     if (WiFi.status() == WL_CONNECTED)
     {
         Serial.println("Envio por Wifi");
-        wifi_http_post(coletadados("1"));
+        wifi_http_post(coleta_dados("1"/*Id do sensor*/));
        
     }
     else
     {
        Serial.println("Envio por GSM");
        gsm_config_gprs();
-       gsm_http_post(coletadados("1"));
+       gsm_http_post(coleta_dados("1"/*Id do sensor*/));
       
     }
 }

@@ -26,12 +26,11 @@ void inicializa_sensor()
   if (!status1)
   {
     Serial.println("Não foi possível localizar o sensor !");
-    while (1)
-      ;
+    while (1);
   }
 }
 
-String  coletadados(String sensorID){
+String  coleta_dados(String sensorID){
   
   value ="Temperatura = ";  //make sure the string is empty if its not
   value += bme.readTemperature();
