@@ -64,7 +64,7 @@ void configurar_WIFI()
 void WIFISetUp(void)
 {
   const char *ssid = "Quarto";
-  const char *password = "master10";
+  const char *password = "master101";
   WiFi.disconnect(true);
   delay(1000);
   WiFi.mode(WIFI_STA);
